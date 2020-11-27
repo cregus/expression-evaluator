@@ -28,6 +28,18 @@ class TokenizerTest {
             ),
             tokenize("100+15")
         )
+        assertEquals(
+            Token.Operator(
+                leftToken = Token.Number(1),
+                rightToken = Token.Operator(
+                    leftToken = Token.Number(2),
+                    rightToken = Token.Number(4),
+                    operation = DefaultOperators.addition
+                ),
+                operation = DefaultOperators.addition
+            ),
+            tokenize("1+2+4")
+        )
     }
 
     @Test

@@ -27,6 +27,7 @@ class EvaluatorTest {
         assertEquals(100.toBigDecimal(), evaluate("10^2"))
         assertEquals(1.toBigDecimal(), evaluate("10%3"))
         assertEquals(8.toBigDecimal(), evaluate("2+3*2"))
+        assertEquals(7.toBigDecimal(), evaluate("1+2+4"))
     }
 
     @Test

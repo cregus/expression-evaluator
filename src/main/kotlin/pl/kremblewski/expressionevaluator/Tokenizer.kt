@@ -100,7 +100,7 @@ object Tokenizer {
                 '(' -> openingCounter++
                 ')' -> closingCounter++
             }
-            if (char == symbol && openingCounter == closingCounter) {
+            if (result.isEmpty() && char == symbol && openingCounter == closingCounter) {
                 result += buffer
                 buffer = ""
             } else {
