@@ -15,7 +15,7 @@ allprojects {
 ### Add library dependency to your project build file
 ```
 dependencies {
-  implementation 'com.github.cregus:expression-evaluator:1.0.1'
+  implementation 'com.github.cregus:expression-evaluator:1.0.2'
 }
 ```
 
