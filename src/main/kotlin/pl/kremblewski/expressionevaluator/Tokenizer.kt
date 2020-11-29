@@ -43,14 +43,6 @@ object Tokenizer {
     }
 
     fun parse(expression: String, data: Map<String, Number> = emptyMap()): Token {
-        if (expression.startsWith('+')) {
-            return Token.Unary.Plus(parse(expression.substring(1), data))
-        }
-
-        if (expression.startsWith('-')) {
-            return Token.Unary.Minus(parse(expression.substring(1), data))
-        }
-
         if (expression.isUnsignedNumber()) {
             return Token.Number(expression.toBigDecimal())
         }
@@ -68,6 +60,14 @@ object Tokenizer {
                     operation = operator.operation
                 )
             }
+        }
+
+        if (expression.startsWith('+')) {
+            return Token.Unary.Plus(parse(expression.substring(1), data))
+        }
+
+        if (expression.startsWith('-')) {
+            return Token.Unary.Minus(parse(expression.substring(1), data))
         }
 
         val name = expression.substringBefore('(')
@@ -100,7 +100,7 @@ object Tokenizer {
                 '(' -> openingCounter++
                 ')' -> closingCounter++
             }
-            if (result.isEmpty() && char == symbol && openingCounter == closingCounter) {
+            if (result.isEmpty() && buffer.isNotEmpty() && char == symbol && openingCounter == closingCounter) {
                 result += buffer
                 buffer = ""
             } else {

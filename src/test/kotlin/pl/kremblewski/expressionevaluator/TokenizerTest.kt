@@ -40,6 +40,16 @@ class TokenizerTest {
             ),
             tokenize("1+2+4")
         )
+        assertEquals(
+            Token.Operator(
+                leftToken = Token.Unary.Minus(
+                    token = Token.Number(5)
+                ),
+                rightToken = Token.Number(10),
+                operation = DefaultOperators.addition
+            ),
+            tokenize("-5+10")
+        )
     }
 
     @Test
